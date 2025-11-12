@@ -1,3 +1,4 @@
+FAILLE SUR LE LOGIN PAS DEPUIS LA PAGE
 BRUTEFORCE
 
 Le but est de bruteforce les mots de passe pour l'utilisateur admin.
