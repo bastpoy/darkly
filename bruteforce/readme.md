@@ -21,3 +21,5 @@ on passe en parametre:
 - l'ip correspondant au localhost
 - l'url
 - :S=flag => parametre hydra permettant de donner la condition de succes qui est le mot cle flag
+
+le flag est: b3a6e43ddf8b4bbb4125e5e7d23040433827759d4de1c04ea63907479a80a6b2
